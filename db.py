@@ -60,5 +60,20 @@ class DB:
 
         return result
 
+    def get_conversation(self, conv_id):
+        self.cursor.execute("SELECT content FROM conversation WHERE convid = ?", (conv_id,))
+        conv_data = self.cursor.fetchall()
+        return conv_data
+
+    def get_cv(self, cv_id ):
+        self.cursor.execute("SELECT cv FROM resume WHERE cvid = ?", (cv_id,))
+        cv_data = self.cursor.fetchone()
+        return cv_data
+
+    def get_jd(self, jd_id):
+        self.cursor.execute('SELECT jd FROM job_description WHERE jdid = ?', (jd_id, ))
+        jd_data = self.cursor.fetchone()
+        return jd_data
+
 
 
